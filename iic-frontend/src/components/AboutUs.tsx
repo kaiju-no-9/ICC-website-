@@ -5,7 +5,7 @@ export default function AboutUs() {
   const doodleImg = "/vector2/product development _ idea, thought, innovation, people, team, teamwork, working together.svg";
 
   return (
-    <section id="about" className="bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="about" className="bg-transparent py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative">
         {/* Decorative Doodle Star (Top Right of Container) */}
         <div className="absolute -top-6 right-4 z-20 pointer-events-none opacity-80 hidden sm:block">
@@ -50,6 +50,8 @@ export default function AboutUs() {
               <img 
                 src={doodleImg}
                 alt="Product Development & Innovation Doodle"
+                loading="lazy"
+                decoding="async"
                 className="w-full max-w-xs md:max-w-sm h-auto object-contain pointer-events-none select-none mix-blend-multiply"
               />
             </div>

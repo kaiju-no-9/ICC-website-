@@ -25,6 +25,7 @@
   /* Typography Fonts */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-gilroy: 'Gilroy', 'Plus Jakarta Sans', 'Outfit', system-ui, sans-serif;
+  --font-rinter: 'Rinter', 'Syne', 'Plus Jakarta Sans', 'Outfit', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-heading-serif: 'Cormorant Garamond', serif;
 
@@ -172,4 +173,16 @@
 
 .font-gilroy {
   font-family: 'Gilroy', 'Plus Jakarta Sans', 'Outfit', system-ui, -apple-system, sans-serif;
+}
+
+.font-rinter {
+  font-family: 'Rinter', 'Syne', 'Plus Jakarta Sans', 'Outfit', system-ui, -apple-system, sans-serif;
+}
+
+/* Light Thin Hairline Grid Background Pattern */
+.bg-grid-hairline {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.065) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.065) 1px, transparent 1px);
 }

@@ -13,7 +13,7 @@ const partners = [
 export default function MarqueeStrip() {
   return (
     <div className="w-full bg-[#000000] text-white py-3 overflow-hidden border-y border-white/10 flex items-center">
-      <div className="flex whitespace-nowrap animate-marquee gap-12 font-mono text-xs uppercase tracking-[0.25em] text-white/80">
+      <div className="flex whitespace-nowrap animate-marquee gap-12 font-mono text-xs uppercase tracking-[0.25em] text-white/80 will-change-transform transform-gpu">
         {[...partners, ...partners, ...partners].map((item, idx) => (
           <span key={idx} className="flex items-center gap-6">
             <span>{item}</span>

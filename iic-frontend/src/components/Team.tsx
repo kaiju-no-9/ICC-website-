@@ -79,7 +79,7 @@ export default function Team() {
   const doodleImg = "/vector2/achievements _ graph, chart, analytics, statistics, flag, teamwork, team, working together.svg";
 
   return (
-    <section id="team" className="bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden font-gilroy">
+    <section id="team" className="bg-transparent py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden font-gilroy">
       <div className="max-w-6xl mx-auto">
         {/* Oversized Mint Color-Block Container (Block Mint #d1fae5) */}
         <motion.div 
@@ -123,13 +123,9 @@ export default function Team() {
           {/* Grid of Custom Styled Team Cards (Gilroy Typography Specified) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
             {teamMembers.map((member, idx) => (
-              <motion.div 
+              <div 
                 key={member.name + idx}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: (idx % 4) * 0.1, duration: 0.6 }}
-                className="bg-white text-[#060016] p-4.5 sm:p-5 rounded-[28px] outline outline-1 outline-[#00160a]/10 shadow-[-8px_16px_24px_rgba(0,22,10,0.06)] hover:shadow-[-12px_20px_28px_rgba(0,22,10,0.12)] transition-all duration-300 flex flex-col items-center text-center justify-between group hover:-translate-y-1 font-gilroy"
+                className="bg-white text-[#060016] p-4.5 sm:p-5 rounded-[28px] outline outline-1 outline-[#00160a]/10 shadow-[-8px_16px_24px_rgba(0,22,10,0.06)] hover:shadow-[-12px_20px_28px_rgba(0,22,10,0.12)] transition-[transform,box-shadow] duration-300 ease-out flex flex-col items-center text-center justify-between group hover:-translate-y-1 font-gilroy"
               >
                 {/* Profile Image Container with Background Organic Blob */}
                 <div className="relative w-full aspect-square mb-3.5 flex items-center justify-center">
@@ -137,7 +133,9 @@ export default function Team() {
                   <img 
                     src={blobs[idx % blobs.length]} 
                     alt="" 
-                    className="absolute inset-0 w-full h-full object-contain pointer-events-none select-none scale-110 opacity-75 group-hover:scale-120 group-hover:opacity-95 transition-all duration-500" 
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 w-full h-full object-contain pointer-events-none select-none scale-110 opacity-75 group-hover:scale-120 group-hover:opacity-95 transition-transform duration-500" 
                   />
 
                   {/* Profile Avatar Frame */}
@@ -145,7 +143,9 @@ export default function Team() {
                     <img 
                       src={member.img} 
                       alt={member.name}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-[transform,filter] duration-500 scale-100 group-hover:scale-105"
                     />
                   </div>
                 </div>
@@ -195,7 +195,7 @@ export default function Team() {
                     <span>Instagram</span>
                   </a>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface ParallaxRevealProps {
   children: React.ReactNode;
@@ -14,8 +15,15 @@ export default function ParallaxReveal({
   id,
 }: ParallaxRevealProps) {
   return (
-    <div id={id} className={`w-full ${className}`}>
+    <motion.div
+      id={id}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className={`w-full will-change-transform transform-gpu ${className}`}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }

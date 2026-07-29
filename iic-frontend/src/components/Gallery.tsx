@@ -179,7 +179,7 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="bg-white py-16 sm:py-24 font-sans overflow-hidden border-t border-black/5 relative">
+    <section id="gallery" className="bg-transparent py-16 sm:py-24 font-sans overflow-hidden border-t border-black/5 relative">
       <style>{marqueeStyle}</style>
 
       {/* Header */}

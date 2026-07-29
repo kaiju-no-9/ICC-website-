@@ -6,7 +6,7 @@ export default function Echo() {
   const doodleImg = "/vector2/data management _ reciept, document, paper, page, woman, people, pages.svg";
 
   return (
-    <section id="initiatives" className="bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="initiatives" className="bg-transparent py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Oversized Coral Color-Block Section (Block Coral #ffedd5) */}
         <motion.div
@@ -29,6 +29,10 @@ export default function Echo() {
                 <img 
                   src={magazineCover} 
                   alt="SPARK Innovation Journal Edition"
+                  loading="lazy"
+                  decoding="async"
+                  width="448"
+                  height="597"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -70,7 +74,7 @@ export default function Echo() {
 
               {/* Publication Doodle Card */}
               <div className="mb-8 p-4 bg-white/40 backdrop-blur-md rounded-2xl border border-black/5 flex items-center gap-4">
-                <img src={doodleImg} alt="Journal Document Doodle" className="w-16 h-16 object-contain pointer-events-none select-none flex-shrink-0 mix-blend-multiply" />
+                <img src={doodleImg} alt="Journal Document Doodle" loading="lazy" decoding="async" className="w-16 h-16 object-contain pointer-events-none select-none flex-shrink-0 mix-blend-multiply" />
                 <div>
                   <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#0f172a]/60 block">RESEARCH & PUBLICATIONS</span>
                   <p className="font-sans text-sm font-semibold text-[#0f172a]">Featuring student patent filings, research papers, and startup success stories across NCR.</p>

@@ -61,7 +61,7 @@ export default function Footer() {
               <a href="#" className="hover:text-[#e4f5a3] transition-colors">YouTube ↗</a>
             </div>
             {/* Social Doodle Illustration */}
-            <img src={socialDoodle} alt="Social Community Doodle" className="w-36 h-auto object-contain pointer-events-none select-none opacity-90" />
+            <img src={socialDoodle} alt="Social Community Doodle" loading="lazy" decoding="async" className="w-36 h-auto object-contain pointer-events-none select-none opacity-90" />
           </div>
 
           {/* Column 3: Get Notified Newsletter */}
@@ -72,7 +72,7 @@ export default function Footer() {
             
             {/* Doodle Accent Squiggle Line */}
             <div className="w-20 pointer-events-none opacity-50 -mt-2">
-              <img src="/vector1/Group 16.svg" alt="Doodle Accent Squiggle" className="w-full h-auto object-contain invert" />
+              <img src="/vector1/Group 16.svg" alt="Doodle Accent Squiggle" loading="lazy" decoding="async" className="w-full h-auto object-contain invert" />
             </div>
 
             <p className="font-sans text-sm text-white/70 leading-relaxed">
@@ -111,6 +111,18 @@ export default function Footer() {
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">MoE Innovation Cell</a>
           </div>
+        </div>
+
+        {/* Subtle Hidden Credit Line */}
+        <div className="mt-6 text-center">
+          <a 
+            href="https://github.com/kaiju-no-9" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="font-mono text-[10px] text-white/20 hover:text-white/60 transition-colors tracking-widest lowercase select-none"
+          >
+            designed with ❤️ by kaiju-no-9
+          </a>
         </div>
       </div>
     </footer>

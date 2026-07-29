@@ -22,6 +22,18 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, 'dist'),
     emptyOutDir: true,
+    cssCodeSplit: true,
+    minify: 'esbuild',
+    target: 'es2020',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'wouter', '@tanstack/react-query'],
+          'vendor-motion': ['framer-motion', 'gsap', 'lenis'],
+          'vendor-icons': ['lucide-react', 'react-icons'],
+        },
+      },
+    },
   },
   server: {
     port,
@@ -32,4 +44,3 @@ export default defineConfig({
     host: '0.0.0.0',
   },
 });
-
