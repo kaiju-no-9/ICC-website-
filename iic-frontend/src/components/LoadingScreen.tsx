@@ -7,31 +7,20 @@ interface LoadingScreenProps {
 }
 
 export default function LoadingScreen({ onComplete, minimumLoadingTime = 2200 }: LoadingScreenProps) {
-  const [progress, setProgress] = useState(0);
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
     // Lock scroll during loading
     document.body.style.overflow = 'hidden';
 
-    const startTime = Date.now();
-    const interval = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const pct = Math.min(100, Math.floor((elapsed / minimumLoadingTime) * 100));
-      setProgress(pct);
-
-      if (pct >= 100) {
-        clearInterval(interval);
-        setTimeout(() => {
-          setIsDone(true);
-          document.body.style.overflow = '';
-          if (onComplete) onComplete();
-        }, 350);
-      }
-    }, 25);
+    const timer = setTimeout(() => {
+      setIsDone(true);
+      document.body.style.overflow = '';
+      if (onComplete) onComplete();
+    }, minimumLoadingTime);
 
     return () => {
-      clearInterval(interval);
+      clearTimeout(timer);
       document.body.style.overflow = '';
     };
   }, [minimumLoadingTime, onComplete]);
@@ -44,10 +33,9 @@ export default function LoadingScreen({ onComplete, minimumLoadingTime = 2200 }:
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0, 
-            y: -30,
-            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } 
+            transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } 
           }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-between p-6 sm:p-12 bg-white text-[#060016] overflow-hidden select-none"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-white text-[#060016] overflow-hidden select-none"
         >
           {/* Hairline Grid & Background Canvas */}
           <div className="absolute inset-0 bg-grid-hairline opacity-50 pointer-events-none" />
@@ -120,27 +108,14 @@ export default function LoadingScreen({ onComplete, minimumLoadingTime = 2200 }:
             }
           `}</style>
 
-          {/* Top Branding Pill Header */}
-          <motion.div 
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="relative z-10 pt-4"
-          >
-            <span className="font-mono text-xs sm:text-sm uppercase tracking-[0.35em] text-[#060016] font-bold bg-neutral-100 border border-black/10 px-5 py-2 rounded-full inline-block shadow-xs">
-              INSTITUTION'S INNOVATION COUNCIL
-            </span>
-          </motion.div>
-
-          {/* Full-Bleed Center Element Container (No Outer Card/Box) */}
+          {/* Centered Cloud Animated SVG Loader Only */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="relative z-10 my-auto flex flex-col items-center text-center"
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="relative z-10 flex items-center justify-center"
           >
-            {/* Enlarged Cloud SVG Animated Loader */}
-            <div className="cloud-loader-wrapper my-2 filter drop-shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
+            <div className="cloud-loader-wrapper filter drop-shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
               <div className="loader">
                 <svg id="cloud" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                   <defs>
@@ -195,31 +170,6 @@ export default function LoadingScreen({ onComplete, minimumLoadingTime = 2200 }:
                   </g>
                 </svg>
               </div>
-            </div>
-
-            {/* Subhead Editorial Tagline */}
-            <p className="font-rinter text-base sm:text-lg font-bold text-[#060016] max-w-sm mt-4 mb-2 leading-snug">
-              Building Tomorrow's Startups From the Ground Up
-            </p>
-          </motion.div>
-
-          {/* Bottom Progress Bar & Percentage Footer */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative z-10 w-full max-w-md pb-6 flex flex-col items-center gap-2.5"
-          >
-            <div className="w-full h-1.5 bg-neutral-100 rounded-full overflow-hidden border border-black/10 shadow-inner">
-              <motion.div
-                className="h-full bg-[#060016] rounded-full"
-                style={{ width: `${progress}%` }}
-                transition={{ ease: 'easeOut' }}
-              />
-            </div>
-            <div className="w-full flex items-center justify-between text-xs font-mono text-[#060016]/80 tracking-widest uppercase font-bold">
-              <span>INITIALIZING</span>
-              <span className="font-extrabold text-[#060016]">{progress}%</span>
             </div>
           </motion.div>
         </motion.div>

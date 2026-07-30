@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLocation } from 'wouter';
 
 const initiatives = [
   {
@@ -41,6 +42,7 @@ const initiatives = [
 ];
 
 export default function Events() {
+  const [, setLocation] = useLocation();
   const doodleImg = "/vector2/achievements _ teamwork, team, working together, assistance, man, woman, people, flag, target.svg";
 
   return (
@@ -115,7 +117,10 @@ export default function Events() {
 
           {/* Action CTA Pill */}
           <div className="mt-12 text-center sm:text-left">
-            <button className="px-8 py-3.5 bg-[#000000] text-white font-sans font-semibold text-base rounded-full hover:bg-neutral-800 transition-all duration-300 shadow-md cursor-pointer inline-flex items-center gap-2">
+            <button 
+              onClick={() => setLocation('/events')}
+              className="px-8 py-3.5 bg-[#000000] text-white font-sans font-semibold text-base rounded-full hover:bg-neutral-800 transition-all duration-300 shadow-md cursor-pointer inline-flex items-center gap-2"
+            >
               <span>View Upcoming Events</span>
               <span className="font-mono text-xs">→</span>
             </button>
