@@ -47,10 +47,10 @@ export default function Navbar() {
         {/* Logo Wordmark */}
         <div 
           onClick={() => scrollTo('home')} 
-          className="cursor-pointer group flex items-center gap-2.5"
+          className="cursor-pointer group flex items-center gap-3"
         >
-          <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white font-bold">
-            <span className="material-symbols-outlined text-base">lightbulb</span>
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-black/15 flex-shrink-0 bg-white shadow-xs p-0.5 group-hover:scale-105 transition-transform">
+            <img src="/moe-iic-logo.jpg" alt="Official MoE IIC Logo" className="w-full h-full object-contain" />
           </div>
           <div className="font-sans text-lg font-extrabold text-black tracking-tight uppercase">
             IIC JSS <span className="text-black/50 font-normal">NOIDA</span>

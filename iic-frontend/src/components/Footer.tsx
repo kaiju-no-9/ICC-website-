@@ -19,13 +19,18 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         {/* Big Wordmark Header */}
         <div className="mb-16 pb-12 border-b border-white/10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-          <div>
-            <span className="font-mono text-xs uppercase tracking-[0.35em] text-[#e4f5a3] block mb-2 font-semibold">
-              INSTITUTION'S INNOVATION COUNCIL
-            </span>
-            <h2 className="font-sans text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tighter leading-none">
-              IIC JSS NOIDA
-            </h2>
+          <div className="flex items-center gap-5">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border border-white/20 flex-shrink-0 bg-white shadow-lg p-1">
+              <img src="/moe-iic-logo.jpg" alt="Official MoE IIC Logo" className="w-full h-full object-contain" />
+            </div>
+            <div>
+              <span className="font-mono text-xs uppercase tracking-[0.35em] text-[#e4f5a3] block mb-2 font-semibold">
+                INSTITUTION'S INNOVATION COUNCIL
+              </span>
+              <h2 className="font-sans text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tighter leading-none">
+                IIC JSS NOIDA
+              </h2>
+            </div>
           </div>
           <div className="flex gap-3">
             <a href="#home" className="px-6 py-2.5 bg-white/10 backdrop-blur-md text-white font-sans text-sm font-semibold rounded-full border border-white/15 hover:bg-white hover:text-black transition-all">
@@ -55,10 +60,10 @@ export default function Footer() {
               CONNECT WITH US
             </span>
             <div className="grid grid-cols-2 gap-3 font-sans text-base text-white/80 font-normal mb-2">
-              <a href="#" className="hover:text-[#e4f5a3] transition-colors">LinkedIn ↗</a>
-              <a href="#" className="hover:text-[#e4f5a3] transition-colors">Instagram ↗</a>
-              <a href="#" className="hover:text-[#e4f5a3] transition-colors">X (Twitter) ↗</a>
-              <a href="#" className="hover:text-[#e4f5a3] transition-colors">YouTube ↗</a>
+              <a href="https://www.linkedin.com/company/iic-jssaten/posts/" target="_blank" rel="noopener noreferrer" className="hover:text-[#e4f5a3] transition-colors">LinkedIn ↗</a>
+              <a href="https://www.instagram.com/iic.jssaten/?hl=en" target="_blank" rel="noopener noreferrer" className="hover:text-[#e4f5a3] transition-colors">Instagram ↗</a>
+              <a href="https://www.linkedin.com/company/iic-jssaten/posts/" target="_blank" rel="noopener noreferrer" className="hover:text-[#e4f5a3] transition-colors">X (Twitter) ↗</a>
+              <a href="https://whatsapp.com/channel/0029Vb93O53GE56qqFW7E800" target="_blank" rel="noopener noreferrer" className="hover:text-[#e4f5a3] transition-colors">WhatsApp ↗</a>
             </div>
             {/* Social Doodle Illustration */}
             <img src={socialDoodle} alt="Social Community Doodle" loading="lazy" decoding="async" className="w-36 h-auto object-contain pointer-events-none select-none opacity-90" />

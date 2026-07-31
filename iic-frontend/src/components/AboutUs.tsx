@@ -24,9 +24,12 @@ export default function AboutUs() {
             <div className="w-full lg:w-3/5 relative">
               {/* Section Eyebrow (figmaMono) */}
               <div className="mb-6">
-                <span className="font-mono text-xs md:text-sm uppercase tracking-[0.35em] text-[#0f172a]/70 font-semibold bg-black/5 px-4 py-1.5 rounded-full inline-block">
-                  ABOUT OUR COUNCIL
-                </span>
+                <div className="inline-flex items-center gap-2.5 bg-black/5 px-4 py-1.5 rounded-full">
+                  <img src="/moe-iic-logo.jpg" alt="MoE IIC Logo" className="w-5 h-5 rounded-full object-contain bg-white p-0.5 border border-black/10" />
+                  <span className="font-mono text-xs md:text-sm uppercase tracking-[0.35em] text-[#0f172a]/80 font-bold">
+                    ABOUT OUR COUNCIL
+                  </span>
+                </div>
               </div>
               
               {/* Main Headline with Underline Swirl Accent */}

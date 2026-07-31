@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import SmoothScroll from '@/components/SmoothScroll';
-import { Bell, Calendar, MapPin, ArrowLeft, CheckCircle2, Sparkles, Clock } from 'lucide-react';
+import { Bell, Calendar, MapPin, ArrowLeft, CheckCircle2, Sparkles, Clock, ExternalLink } from 'lucide-react';
 
 interface EventItem {
   id: string;
@@ -255,28 +255,17 @@ export default function UpcomingEvents() {
                     </p>
                   </div>
 
-                  {/* Bottom Interactive Notify Me Button */}
+                  {/* Bottom Interactive Know More Button (Directs to WhatsApp Channel) */}
                   <div className="pt-4 border-t border-black/10 flex items-center justify-between gap-4">
-                    <button
-                      onClick={() => toggleNotify(item.id)}
-                      className={`px-5 py-2.5 rounded-full text-xs font-sans font-bold transition-all cursor-pointer inline-flex items-center gap-2 shadow-xs ${
-                        notifiedEvents[item.id]
-                          ? 'bg-black text-white'
-                          : 'bg-white text-[#0f172a] border border-black/15 hover:bg-black hover:text-white'
-                      }`}
+                    <a
+                      href="https://whatsapp.com/channel/0029Vb93O53GE56qqFW7E800"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2.5 rounded-full text-xs font-sans font-bold transition-all cursor-pointer inline-flex items-center gap-2 shadow-xs bg-white text-[#0f172a] border border-black/15 hover:bg-black hover:text-white"
                     >
-                      {notifiedEvents[item.id] ? (
-                        <>
-                          <CheckCircle2 className="w-4 h-4 text-[#e4f5a3]" />
-                          <span>Notified!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Bell className="w-4 h-4" />
-                          <span>Get Notified On Launch</span>
-                        </>
-                      )}
-                    </button>
+                      <ExternalLink className="w-4 h-4" />
+                      <span>KNOW MORE</span>
+                    </a>
 
                     <span className="font-mono text-[11px] font-bold text-[#0f172a]/60 uppercase tracking-widest">
                       COMING SOON
