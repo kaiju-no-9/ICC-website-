@@ -24,7 +24,7 @@ interface EventItem {
 const upcomingEventsData: EventItem[] = [
   {
     id: 'event-01',
-    category: 'Incubation & Pitch Fests',
+    category: 'Incubation',
     tag: 'FLAGSHIP PITCH',
     title: 'Will be uploaded soon',
     date: 'COMING SOON',
@@ -37,7 +37,7 @@ const upcomingEventsData: EventItem[] = [
   },
   {
     id: 'event-02',
-    category: 'Hackathons & Ideathons',
+    category: 'Challenges',
     tag: '24HR HACKATHON',
     title: 'Will be uploaded soon',
     date: 'COMING SOON',
@@ -50,8 +50,8 @@ const upcomingEventsData: EventItem[] = [
   },
   {
     id: 'event-03',
-    category: 'IPR & Tech Transfer',
-    tag: 'PATENT WORKSHOP',
+    category: 'Teamwork',
+    tag: 'COUNCIL MEETING',
     title: 'Will be uploaded soon',
     date: 'COMING SOON',
     time: 'COMING SOON',
@@ -63,8 +63,8 @@ const upcomingEventsData: EventItem[] = [
   },
   {
     id: 'event-04',
-    category: 'Incubation & Pitch Fests',
-    tag: 'STARTUP EXPO',
+    category: 'IPR & Patents',
+    tag: 'PATENT WORKSHOP',
     title: 'Will be uploaded soon',
     date: 'COMING SOON',
     time: 'COMING SOON',
@@ -76,8 +76,8 @@ const upcomingEventsData: EventItem[] = [
   },
   {
     id: 'event-05',
-    category: 'Hackathons & Ideathons',
-    tag: 'IDEATHON',
+    category: 'Ecosystem',
+    tag: 'INNOVATION SUMMIT',
     title: 'Will be uploaded soon',
     date: 'COMING SOON',
     time: 'COMING SOON',
@@ -89,8 +89,8 @@ const upcomingEventsData: EventItem[] = [
   },
   {
     id: 'event-06',
-    category: 'IPR & Tech Transfer',
-    tag: 'NATIONAL CONCLAVE',
+    category: 'Internships',
+    tag: 'STARTUP COHORT',
     title: 'Will be uploaded soon',
     date: 'COMING SOON',
     time: 'COMING SOON',
@@ -104,30 +104,29 @@ const upcomingEventsData: EventItem[] = [
 
 const categories = [
   'All Events',
-  'Hackathons & Ideathons',
-  'Incubation & Pitch Fests',
-  'IPR & Tech Transfer',
+  'Incubation',
+  'Challenges',
+  'Teamwork',
+  'IPR & Patents',
+  'Ecosystem',
+  'Internships',
 ];
 
 export default function UpcomingEvents() {
   const [, setLocation] = useLocation();
   const [selectedCategory, setSelectedCategory] = useState('All Events');
-  const [notifiedEvents, setNotifiedEvents] = useState<Record<string, boolean>>({});
 
-  const filteredEvents = upcomingEventsData.filter(
-    (ev) => selectedCategory === 'All Events' || ev.category === selectedCategory
-  );
-
-  const toggleNotify = (id: string) => {
-    setNotifiedEvents((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
+  // Filter events based on selected category cleanly
+  const displayedEvents = React.useMemo(() => {
+    if (selectedCategory === 'All Events') {
+      return upcomingEventsData;
+    }
+    return upcomingEventsData.filter((ev) => ev.category === selectedCategory);
+  }, [selectedCategory]);
 
   return (
     <SmoothScroll>
-      <div className="bg-white text-black selection:bg-black selection:text-white overflow-x-hidden min-h-screen flex flex-col justify-between">
+      <div className="bg-white text-[#060016] selection:bg-[#060016] selection:text-white overflow-x-hidden min-h-screen flex flex-col justify-between">
         <Navbar />
 
         {/* Main Content Area */}
@@ -151,9 +150,9 @@ export default function UpcomingEvents() {
 
           {/* Section Hero Header Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
             className="mb-12 p-8 sm:p-12 bg-[#060016] text-white rounded-[28px] md:rounded-[36px] relative overflow-hidden shadow-xl border border-white/10"
           >
             {/* Decorative Sparkle Accent */}
@@ -180,7 +179,7 @@ export default function UpcomingEvents() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                className={`px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                   selectedCategory === cat
                     ? 'bg-[#060016] text-white shadow-md'
                     : 'bg-neutral-100 text-black/70 border border-black/10 hover:bg-neutral-200'
@@ -191,19 +190,23 @@ export default function UpcomingEvents() {
             ))}
           </div>
 
-          {/* Upcoming Events Grid */}
+          {/* Silky Smooth 60fps GPU Accelerated Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <AnimatePresence mode="popLayout">
-              {filteredEvents.map((item, idx) => (
+              {displayedEvents.map((item) => (
                 <motion.div
                   key={item.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{
+                    layout: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+                    opacity: { duration: 0.25 },
+                    y: { duration: 0.25 }
+                  }}
                   style={{ backgroundColor: item.colorBg }}
-                  className="text-[#0f172a] rounded-[28px] p-7 sm:p-9 relative overflow-hidden shadow-sm hover:shadow-md transition-all border border-black/10 flex flex-col justify-between group"
+                  className="text-[#0f172a] rounded-[28px] p-7 sm:p-9 relative overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-black/10 flex flex-col justify-between group transform-gpu will-change-transform"
                 >
                   {/* Decorative Background Asset */}
                   {item.doodleImg && (

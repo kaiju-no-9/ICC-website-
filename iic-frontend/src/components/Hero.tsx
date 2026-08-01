@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import gsap from 'gsap';
+import { TextPlugin } from 'gsap/TextPlugin';
+
+gsap.registerPlugin(TextPlugin);
 
 export default function Hero() {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const target = document.querySelector('.target');
+    if (!target) return;
+
+    // GSAP TextPlugin animation sequence (triggers typing animation after preloader)
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".target",
+        { text: "" },
+        {
+          text: { value: "Startups" },
+          duration: 2,
+          ease: "none",
+          delay: 2.2
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section id="home" className="relative min-h-[100dvh] w-full flex flex-col items-center justify-between text-center px-4 sm:px-6 md:px-12 overflow-hidden bg-white text-[#060016] pt-20 pb-8 sm:py-0">
@@ -197,7 +222,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Central Focal Point Hero Doodle SVG Artwork (Replaces IIC Text) */}
+        {/* Central Focal Point Hero Doodle SVG Artwork */}
         <div className="w-full max-w-xs sm:max-w-md md:max-w-xl lg:max-w-2xl my-2 flex items-center justify-center pointer-events-none select-none drop-shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
           <img 
             src="/hero-doodle.jpg_2K_202607311413-Photoroom (1).svg" 
@@ -206,10 +231,10 @@ export default function Hero() {
           />
         </div>
 
-        {/* Inspiring Quote with Logo-Inspired Dual-Tone Spectrum Gradient Accent */}
+        {/* Inspiring Quote with GSAP TextPlugin Animated Target Span */}
         <p className="font-rinter text-base sm:text-xl md:text-2xl font-extrabold text-[#060016] max-w-2xl leading-snug tracking-tight mt-2 mb-6 drop-shadow-[0_2px_6px_rgba(255,255,255,0.85)] [text-shadow:_0_0_10px_rgba(255,255,255,0.7)]">
           “Empowering Student Innovation & Building Tomorrow's{' '}
-          <span className="bg-gradient-to-r from-[#d97706] via-[#dc2626] to-[#2563eb] bg-clip-text text-transparent">
+          <span className="target inline-block bg-gradient-to-r from-[#d97706] via-[#dc2626] to-[#2563eb] bg-clip-text text-transparent">
             Startups
           </span>{' '}
           From the Ground Up.”
